@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.instagram.model.viewModels.UsersSearchViewModel" />
+        <variable
+            name="viewModel1"
+            type="com.example.instagram.model.viewModels.MonawatViewModel" />
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.SearchFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:background="@android:color/white"
+        android:id="@+id/app_bar_layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/button_black_background"
+            android:id="@+id/tool_bar_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/search_fragment_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/search" />
+                <EditText
+                    android:id="@+id/search_edit_text"
+                    android:layout_toEndOf="@+id/search_fragment_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Search...."
+                    android:textColor="@color/primaryColor"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="6dp" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <HorizontalScrollView
+
+        android:layout_below="@+id/app_bar_layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/horizontalScrollView"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                android:backgroundTint="@android:color/white"
+                style="@style/Widget.MaterialComponents.Button"
+                android:background="@drawable/scroll_button_background"
+                android:layout_margin="5dp"
+                android:textColor="@color/primaryColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Foods"
+                android:id="@+id/foods_btn" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:background="@drawable/scroll_button_background"
+                android:layout_margin="5dp"
+                android:textColor="@color/primaryColor"
+                android:backgroundTint="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Travelling"
+                android:id="@+id/travelling_btn" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:background="@drawable/scroll_button_background"
+                android:textColor="@color/primaryColor"
+                android:backgroundTint="@android:color/white"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sports"
+                android:id="@+id/sports_btn" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:background="@drawable/scroll_button_background"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/primaryColor"
+                android:backgroundTint="@android:color/white"
+                android:layout_height="wrap_content"
+                android:text="Music"
+                android:id="@+id/music_btn" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:background="@drawable/scroll_button_background"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryColor"
+                android:backgroundTint="@android:color/white"
+                android:text="Television"
+                android:id="@+id/tv_btn" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:id="@+id/recycler_view_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:listData="@{viewModel.searchUserList}"
+        android:layout_below="@+id/horizontalScrollView"
+        tools:itemCount="12"
+        tools:listitem="@layout/user_item_layout"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:id="@+id/recycler_view_media"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horizontalScrollView"
+        app:spanCount="2"
+        tools:itemCount="12"
+        tools:listitem="@layout/user_item_layout"
+        />
+</RelativeLayout>
+</layout>
+

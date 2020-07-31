@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout   xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.instagram.model.viewModels.CommentActViewModel" />
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.CommentsActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:background="@android:color/white"
+        android:id="@+id/app_bar_layout_comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@android:color/white"
+            android:id="@+id/tool_bar_comments"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Comments"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/post_image_comment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/profile"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/app_bar_layout_comments" />
+    <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:stackFromEnd="true"
+        app:reverseLayout="true"
+        android:id="@+id/recycler_view_comments"
+        app:listComments="@{viewModel.commentList}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/post_image_comment"
+        android:layout_margin="5dp"
+        android:layout_above="@+id/commentsRelative"
+        />
+<RelativeLayout
+    android:id="@+id/commentsRelative"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#fff"
+    android:padding="14dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image_comment"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/profile"/>
+
+    <EditText
+        android:id="@+id/add_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/profile_image_comment"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="write your comment..."
+        android:layout_centerVertical="true"
+        android:padding="8dp"
+        android:layout_toStartOf="@+id/post_comment"
+        android:maxLines="1"
+        />
+<TextView
+    android:id="@+id/post_comment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="publish"
+    android:textColor="@color/primaryColor"
+    android:textStyle="bold"
+    android:padding="8dp"
+    android:textSize="18sp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_alignParentEnd="true"
+    android:layout_centerVertical="true"/>
+</RelativeLayout>
+</RelativeLayout>
+</layout>

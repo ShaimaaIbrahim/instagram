@@ -1,0 +1,113 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+}
+
+android {
+
+
+    compileSdkVersion 30
+    // buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.example.instagram"
+        minSdkVersion 28
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+   /* kotlinOptions {
+        jvmTarget = '1.8'
+    }*/
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += [
+                '-Xjvm-default=enable'
+        ]
+    }
+    dataBinding{
+        enabled = true
+    }
+
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //vector drawable
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+    //circleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //firebase
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'com.google.firebase:firebase-database:19.3.1'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+
+    //multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //cardView
+    implementation "androidx.cardview:cardview:1.0.0"
+    
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+    //kohi library
+    implementation "im.ene.kohii:kohii-core:1.0.0.2010004" // core library
+    implementation "im.ene.kohii:kohii-exoplayer:1.0.0.2010004" // default support for ExoPlayer
+    implementation "com.google.android.exoplayer:exoplayer:2.10.4"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+    //picasso
+    implementation "com.squareup.picasso:picasso:$version_picasso"
+
+    //toro , exoPlayer
+     implementation "im.ene.toro3:toro:${latest_release}"
+     implementation 'com.google.android.exoplayer:exoplayer:2.8.4'
+    implementation "im.ene.toro3:toro-ext-exoplayer:${latest_release}"
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.7.3'
+
+    //imageCrop
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    //progress stories
+
+    implementation 'com.github.shts:StoriesProgressView:3.0.0'
+    //test
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+apply plugin: 'com.google.gms.google-services'
